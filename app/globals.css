@@ -124,6 +124,37 @@
   }
 }
 
+/* Added Web3-style animations for premium feel */
+@keyframes web3-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+    filter: drop-shadow(0 10px 25px rgba(85, 130, 220, 0.15));
+  }
+  50% {
+    transform: translateY(-12px);
+    filter: drop-shadow(0 15px 35px rgba(85, 130, 220, 0.25));
+  }
+}
+
+@keyframes web3-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(85, 130, 220, 0.3), 0 0 40px rgba(96, 184, 140, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(85, 130, 220, 0.4), 0 0 60px rgba(96, 184, 140, 0.3);
+  }
+}
+
+.animate-web3-float {
+  animation: web3-float 3s ease-in-out infinite;
+}
+
+.animate-web3-glow {
+  animation: web3-glow 2s ease-in-out infinite;
+}
+
 /* Hide v0 branding elements */
 [class*="v0"],
 [id*="v0"],

@@ -2,6 +2,16 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-b from-white to-blue-50 border-t border-border px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-5xl">
+        <div className="flex justify-center mb-8">
+          <div className="relative w-full max-w-xs h-32">
+            <img
+              src="https://i.ibb.co/rRRTC9PV/file-00000000a88c71f49bd5ef3686e79bdf.png"
+              alt="Students studying together"
+              className="w-full h-full object-contain animate-web3-float"
+            />
+          </div>
+        </div>
+
         <div className="grid gap-8 md:grid-cols-3 mb-8 pb-8 border-b border-border">
           <div>
             <h3 className="font-bold text-foreground mb-4">ExamHelper AI</h3>
