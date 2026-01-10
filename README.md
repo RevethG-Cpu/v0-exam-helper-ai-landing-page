@@ -40,3 +40,6 @@ https://v0-exam-helper-ai-landing-page.vercel.app
 
 ## GitHub
 https://github.com/RevethG-Cpu/v0-exam-helper-ai-landing-page
+## Open Source
+This project is open source and free to use.
+Community contributions, feedback, and forks are welcome.
