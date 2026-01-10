@@ -19,65 +19,27 @@ interface ChatAssistantProps {
   setIsOpen: (open: boolean) => void
 }
 
-const BOT_SYSTEM_PROMPT = `You are ExamHelper AI (EHA), a friendly, intelligent, student-focused assistant built to help students prepare for exams.
-
-Your role is STRICTLY LIMITED to ExamHelper AI only.
-
-CONVERSATION FLOW:
-1. On first greeting (hi, hello, start, etc.), respond with:
-"👋 Welcome to ExamHelper AI (EHA)!
-I'm your personal exam support assistant, here to help you with study tips, exam focus areas, prayers, motivation & reminders.
-
-Let's get started 😊
-What is your FULL NAME and the NAME of your SCHOOL?"
-
-2. After user provides name and school, respond with:
-"Nice to meet you, [Name]! 🎓
-How can ExamHelper AI help you today?
-You can ask for WAEC, JAMB, NECO, IELTS tips, motivation, or exam prayers."
-
-3. For subsequent exam-related questions:
-- Provide study tips, exam strategies, and motivation
-- Be encouraging and supportive
-- Only show motivational messages when contextually relevant to the conversation
-
-RESTRICTIONS:
-- Do NOT assume user emotions on first message
-- Do NOT answer non-exam-related questions
-- Politely redirect off-topic questions with: "That's outside my scope. I'm here to help with exam preparation! What exam are you preparing for?"
-- Maintain friendly Nigerian student tone
-- Do NOT provide leaked exam content
-
-You help students with:
-- Study tips and exam preparation strategies
-- Motivation and encouragement for studying
-- Exam prayers and positive affirmations
-- Guidance for WAEC, JAMB, NECO, IELTS, and university exams
-- How to use ExamHelper AI
-
-Always remind users that success comes from learning and consistent effort, not shortcuts.`
-
 export default function ChatAssistant({ isOpen, setIsOpen }: ChatAssistantProps) {
-  const [conversationState, setConversationState] = useState<"new" | "awaiting_details" | "active">("new")
+  const [conversationState, setConversationState] = useState<
+    "new" | "awaiting_details" | "active" | "awaiting_subscription" | "subscribed"
+  >("new")
   const [userDetails, setUserDetails] = useState<{ name?: string; school?: string }>({})
-
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  // Initialize with first message on mount
   useEffect(() => {
-    if (messages.length === 0 && conversationState === "new") {
+    if (isOpen && messages.length === 0) {
       const initialMessage: Message = {
-        id: "1",
-        text: "Hey there! 😊 I'm ExamHelper AI. I'm here to help you prepare for your exams with study tips, motivation, and guidance. How can I assist you today?",
+        id: "initial",
+        text: "👋 Hi there! Type a message to get started with ExamHelper AI.",
         sender: "bot",
         timestamp: new Date(),
       }
       setMessages([initialMessage])
     }
-  }, [])
+  }, [isOpen])
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -100,15 +62,21 @@ export default function ChatAssistant({ isOpen, setIsOpen }: ChatAssistantProps)
 
   const generateBotResponse = (userMessage: string): string => {
     const lowerMessage = userMessage.toLowerCase()
+    const greetings = ["hi", "hello", "hey", "start", "begin", "help"]
+    const isGreeting = greetings.some((g) => lowerMessage.includes(g))
 
     // First interaction - user greeting
-    if (conversationState === "new") {
+    if (conversationState === "new" && isGreeting) {
       setConversationState("awaiting_details")
-      return `👋 Welcome to ExamHelper AI (EHA)!
-I'm your personal exam support assistant, here to help you with study tips, exam focus areas, prayers, motivation & reminders.
+      return `Welcome to ExamHelper AI (EHA) 🎓
+By RevNet Network Family
 
-Let's get started 😊
-What is your FULL NAME and the NAME of your SCHOOL?`
+I help students prepare for:
+WAEC • JAMB • NECO • IELTS • University Exams
+
+Please tell me:
+1️⃣ Your full name
+2️⃣ Your school`
     }
 
     // Awaiting user details (name and school)
@@ -117,58 +85,173 @@ What is your FULL NAME and the NAME of your SCHOOL?`
       if (details.name && details.school) {
         setUserDetails(details)
         setConversationState("active")
-        return `Nice to meet you, ${details.name}! 🎓
-How can ExamHelper AI help you today?
-You can ask for WAEC, JAMB, NECO, IELTS tips, motivation, or exam prayers.`
+        return `Nice to meet you, ${details.name} 👋
+
+What exam are you preparing for?
+(Example: WAEC, JAMB, NECO, IELTS)`
       } else {
         return `I'd love to get your details! Please share:
 - Your full name
 - Your school name
 
-You can type them like: "John Smith and Lagos State University" or on separate lines.`
+You can type: "John Smith and Lagos State University"`
       }
     }
 
-    // Active conversation - handle exam-related and off-topic questions
-    const examKeywords = [
-      "waec",
-      "jamb",
-      "neco",
-      "ielts",
-      "exam",
-      "study",
-      "test",
-      "preparation",
-      "prepare",
-      "tips",
-      "motivation",
-      "prayer",
-      "focus",
-      "revision",
-      "subject",
-      "grade",
-      "score",
-      "syllabus",
-      "past papers",
-    ]
+    // Active conversation - user mentions an exam
+    if (conversationState === "active") {
+      const examKeywords = ["waec", "jamb", "neco", "ielts", "exam", "prepare"]
+      const isExamMention = examKeywords.some((keyword) => lowerMessage.includes(keyword))
 
-    const isExamRelated = examKeywords.some((keyword) => lowerMessage.includes(keyword))
+      if (isExamMention) {
+        setConversationState("awaiting_subscription")
+        return `Great choice 👍
 
-    if (!isExamRelated && conversationState === "active") {
-      return `That's outside my scope. I'm here to help with exam preparation! What exam are you preparing for? I can help with WAEC, JAMB, NECO, IELTS, or any other exam you're studying for. 📚`
+Before I give you detailed study tips, focus areas, and exam guidance, please confirm your access.
+
+🔓 ExamHelper AI is a subscription-based service.
+
+Choose a plan:
+Weekly – ₦1,000 (7 days access)
+Monthly – ₦3,500 (30 days access)
+
+👇 Subscribe here:
+Weekly: https://paystack.shop/pay/hrembxm-55
+Monthly: https://paystack.shop/pay/17hhc-82l-
+
+If you're just exploring, I can still share:
+✔ How ExamHelper AI works
+✔ General exam motivation
+✔ Exam prayers
+✔ How to use the platform
+
+What would you like to do?`
+      }
+
+      // Off-topic redirect
+      return `That's outside my scope. I'm here to help with exam preparation!
+What exam are you preparing for? (WAEC, JAMB, NECO, IELTS) 📚`
     }
 
-    // Exam-related responses
-    const examResponses = [
-      `Great question! 📚 For exam preparation, I recommend breaking your study into focused 45-minute sessions with short 10-minute breaks. This helps improve concentration and retention.${userDetails.name ? ` You've got this, ${userDetails.name}!` : ""}`,
-      `I love your commitment to studying! 💪 Here's a quick tip: Review the likely exam focus areas regularly and practice with past papers. This builds confidence! 🎯`,
-      `That's the right approach! Success comes from consistent preparation and smart study habits. What specific topic or exam are you focusing on?`,
-      `Don't worry, you can do this! 🙏 Stay focused, trust your preparation, and remember to take care of yourself. Sleep, nutrition, and exercise are just as important as studying.`,
-      `You're on the right track! 🚀 Remember, every study session brings you closer to your goal. Keep pushing forward!`,
-      `Perfect! Whether it's WAEC, JAMB, NECO, IELTS, or university exams, consistent effort and smart strategies are your keys to success. What would you like to focus on?`,
-    ]
+    // Awaiting subscription - user responds to subscription prompt
+    if (conversationState === "awaiting_subscription") {
+      const subscriptionKeywords = ["subscribed", "paid", "purchased", "confirmed", "done", "weekly", "monthly"]
+      const isSubscriptionConfirmed = subscriptionKeywords.some((keyword) => lowerMessage.includes(keyword))
 
-    return examResponses[Math.floor(Math.random() * examResponses.length)]
+      if (isSubscriptionConfirmed) {
+        setConversationState("subscribed")
+        return `🎉 Welcome onboard, ${userDetails.name}!
+
+I'm ready to help you succeed 💪
+
+Tell me:
+• Which subject you want help with
+• Your exam date (if available)
+
+Let's prepare step by step.`
+      }
+
+      // Non-subscription allowed responses
+      const generalAllowedKeywords = [
+        "how does it work",
+        "explain",
+        "prayer",
+        "motivation",
+        "encourage",
+        "doubt",
+        "scared",
+        "worried",
+        "nervous",
+      ]
+      const isGeneralRequest = generalAllowedKeywords.some((keyword) => lowerMessage.includes(keyword))
+
+      if (isGeneralRequest) {
+        if (lowerMessage.includes("prayer") || lowerMessage.includes("encourage")) {
+          return `That's exactly the right mindset! Motivation combined with consistent action is the key to success 💪
+
+Remember, you have the capability to succeed. Keep pushing forward! 🙏
+
+When you're ready to unlock full exam-specific help, subscribe using the links above.`
+        }
+
+        return `ExamHelper AI helps students study smarter by:
+✔ Daily study guidance
+✔ Motivation & exam prayers
+✔ WhatsApp delivery
+✔ Nigerian-focused exam support
+
+To unlock full exam-specific help (focus areas, detailed tips, study schedules), please subscribe using the links above.`
+      }
+
+      // Default redirect back to subscription
+      return `To get detailed exam guidance, please subscribe:
+Weekly: https://paystack.shop/pay/hrembxm-55
+Monthly: https://paystack.shop/pay/17hhc-82l-
+
+Or let me know if you'd like general motivation or exam prayers 🙏`
+    }
+
+    // Subscribed - user can access full content
+    if (conversationState === "subscribed") {
+      const examKeywords = [
+        "waec",
+        "jamb",
+        "neco",
+        "ielts",
+        "study",
+        "focus",
+        "tip",
+        "subject",
+        "preparation",
+        "strategy",
+      ]
+      const isExamRelated = examKeywords.some((keyword) => lowerMessage.includes(keyword))
+
+      if (isExamRelated) {
+        const examResponses = [
+          `Excellent! 📚 For exam preparation, I recommend:
+• Break your study into focused 45-minute sessions with 10-minute breaks
+• Review likely exam focus areas regularly
+• Practice with past papers
+You've got this, ${userDetails.name}! 💪`,
+
+          `That's the right approach! 🎯 Success comes from consistent preparation and smart study habits.
+
+Key tips:
+• Create a study schedule
+• Focus on high-yield topics
+• Take practice tests
+• Review weak areas
+
+What's your next focus area?`,
+
+          `Perfect! Here's my guidance:
+✔ Start with the syllabus and identify key topics
+✔ Use active recall and spaced repetition
+✔ Join study groups if possible
+✔ Practice with past papers regularly
+
+You're on the right track! 🚀`,
+
+          `Great question! For ${userDetails.name}:
+• Break complex topics into smaller chunks
+• Teach concepts to someone else (improves retention)
+• Use mnemonics for hard-to-remember facts
+• Review regularly - don't cram the night before
+
+Keep pushing! 💪`,
+        ]
+        return examResponses[Math.floor(Math.random() * examResponses.length)]
+      }
+
+      // Off-topic even when subscribed
+      return `I'm here to help only with exam preparation and ExamHelper AI.
+Please let me know how I can support your studies 📚`
+    }
+
+    // Default fallback
+    return `I'm here to help with exam preparation! 
+What exam are you preparing for? 📚`
   }
 
   const handleSendMessage = async (e: React.FormEvent) => {
@@ -218,7 +301,7 @@ You can type them like: "John Smith and Lagos State University" or on separate l
     <Card className="fixed bottom-6 right-6 w-96 max-w-[calc(100vw-2rem)] h-[600px] flex flex-col shadow-2xl z-50 border-2 border-border">
       <div className="bg-primary text-primary-foreground p-4 rounded-t-lg flex justify-between items-center">
         <div>
-          <h3 className="font-bold text-lg">ExamHelper AI Assistant 😊</h3>
+          <h3 className="font-bold text-lg">ExamHelper AI (EHA) 😊</h3>
           <p className="text-xs opacity-90">Online & ready to help</p>
         </div>
         <Button
@@ -235,7 +318,7 @@ You can type them like: "John Smith and Lagos State University" or on separate l
         {messages.map((message) => (
           <div key={message.id} className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}>
             <div
-              className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg text-sm ${
+              className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg text-sm whitespace-pre-wrap ${
                 message.sender === "user"
                   ? "bg-primary text-primary-foreground rounded-br-none"
                   : "bg-muted text-foreground rounded-bl-none"
@@ -266,11 +349,7 @@ You can type them like: "John Smith and Lagos State University" or on separate l
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={
-              conversationState === "new"
-                ? "Type 'hi' or 'hello' to start..."
-                : conversationState === "awaiting_details"
-                  ? "Share your name and school..."
-                  : "Ask me anything about exam prep..."
+              conversationState === "awaiting_details" ? "Your name and school..." : "Ask about exam prep..."
             }
             className="flex-1 px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
           />
