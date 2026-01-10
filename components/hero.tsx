@@ -19,7 +19,7 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center mb-16">
-          <a href="https://paystack.shop/pay/akn-i8sbdd" target="_blank" rel="noopener noreferrer">
+          <a href="https://paystack.shop/pay/9chimxa1yz" target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"
               className="h-12 px-8 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground rounded-full transition-all duration-200 active:scale-95"

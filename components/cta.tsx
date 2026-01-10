@@ -10,12 +10,14 @@ export default function CTA() {
         <p className="text-lg text-muted-foreground mb-8">
           Join thousands of students preparing for their exams with ExamHelper AI
         </p>
-        <Button
-          size="lg"
-          className="h-12 px-10 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground rounded-full"
-        >
-          Get Started on WhatsApp
-        </Button>
+        <a href="https://paystack.shop/pay/9chimxa1yz" target="_blank" rel="noopener noreferrer">
+          <Button
+            size="lg"
+            className="h-12 px-10 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground rounded-full"
+          >
+            Get Started on WhatsApp
+          </Button>
+        </a>
       </div>
     </section>
   )
