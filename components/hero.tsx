@@ -3,6 +3,11 @@
 import { Button } from "@/components/ui/button"
 
 export default function Hero() {
+  const handleSubscribeClick = () => {
+    const pricingSection = document.getElementById("pricing-section")
+    pricingSection?.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white px-4 py-20 sm:py-32 md:py-40">
       <div className="mx-auto max-w-4xl text-center">
@@ -19,14 +24,14 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center mb-16">
-          <a href="https://paystack.shop/pay/9chimxa1yz" target="_blank" rel="noopener noreferrer">
+          <button onClick={handleSubscribeClick}>
             <Button
               size="lg"
               className="h-12 px-8 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground rounded-full transition-all duration-200 active:scale-95"
             >
               Subscribe Now
             </Button>
-          </a>
+          </button>
           <a href="https://wa.me/2348100710264" target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"

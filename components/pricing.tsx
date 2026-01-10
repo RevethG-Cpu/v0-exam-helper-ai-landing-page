@@ -9,16 +9,16 @@ export default function Pricing() {
     {
       name: "Weekly Plan",
       price: "₦1,000",
-      period: "week",
+      period: "7 days",
       description: "Perfect for quick preparation",
       features: ["7 days access", "Unlimited tips & messages", "Daily exam motivation", "Study reminders"],
-      cta: "Get Started",
-      paystackLink: "https://paystack.shop/pay/9chimxa1yz",
+      cta: "Subscribe Weekly",
+      paystackLink: "https://paystack.shop/pay/hrembxm-55",
     },
     {
       name: "Monthly Plan",
       price: "₦3,500",
-      period: "month",
+      period: "30 days",
       description: "Our most popular plan",
       features: [
         "30 days access",
@@ -28,14 +28,17 @@ export default function Pricing() {
         "Study motivation & reminders",
         "Focus area guidance",
       ],
-      cta: "Get Started",
+      cta: "Subscribe Monthly",
       highlighted: true,
-      paystackLink: "https://paystack.shop/pay/akn-i8sbdd",
+      paystackLink: "https://paystack.shop/pay/17hhc-82l-",
     },
   ]
 
   return (
-    <section className="px-4 py-16 sm:py-20 md:py-24 bg-gradient-to-b from-blue-50 to-white">
+    <section
+      id="pricing-section"
+      className="px-4 py-16 sm:py-20 md:py-24 bg-gradient-to-b from-blue-50 to-white scroll-mt-20"
+    >
       <div className="mx-auto max-w-5xl">
         <div className="text-center mb-12">
           <h2 className="text-balance text-3xl font-bold text-foreground sm:text-4xl md:text-4xl mb-4">
@@ -92,9 +95,9 @@ export default function Pricing() {
 
         <div className="text-center mt-12 space-y-4">
           <p className="text-sm text-muted-foreground">
-            Trusted by Nigerian students preparing for WAEC, JAMB, NECO & IELTS
+            Trusted by Nigerian students preparing for WAEC, JAMB, NECO & IELTS 🇳🇬
           </p>
-          <p className="text-xs text-muted-foreground">Secure payment via Paystack (Nigeria 🇳🇬)</p>
+          <p className="text-xs text-muted-foreground">Secure one-time payment via Paystack (Nigeria 🇳🇬)</p>
         </div>
       </div>
     </section>

@@ -44,7 +44,8 @@ export default function Footer() {
         <div className="text-center space-y-3 text-sm">
           <p className="text-foreground font-semibold">ExamHelper AI by RevNet Network Family</p>
           <p className="text-muted-foreground">
-            This service provides study guidance and motivation only. It does NOT provide leaked exam content.
+            This service provides study guidance, motivation, and exam preparation support only. It does NOT provide
+            leaked or illegal exam content.
           </p>
           <p className="text-xs text-muted-foreground/60 pt-4">© 2026 ExamHelper AI. All rights reserved.</p>
         </div>
