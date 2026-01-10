@@ -1,30 +1,42 @@
-# ExamHelper AI landing page
+# ExamHelper AI
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+ExamHelper AI is a student-focused AI assistant designed to help secondary school and university students understand exam questions, revise smarter, and prepare confidently for exams.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/fomokaro578-9933s-projects/v0-exam-helper-ai-landing-page)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/reznsSiUt0y)
+## Problem
+Many students struggle with:
+- Understanding exam questions
+- Lack of personalized explanations
+- Limited access to tutors
+- High cost of learning materials
 
-## Overview
+This is especially common in developing regions.
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+## Solution
+ExamHelper AI provides:
+- Simple, student-friendly explanations
+- Step-by-step answers
+- Exam-focused guidance
+- Mobile-first access for low-end devices
 
-## Deployment
+## Who This Helps
+- Secondary school students
+- University students
+- Exam candidates in Africa and globally
 
-Your project is live at:
+## Current Status
+- Landing page live
+- AI conversation flow implemented
+- Deployed on Vercel
+- Public GitHub repository
 
-**[https://vercel.com/fomokaro578-9933s-projects/v0-exam-helper-ai-landing-page](https://vercel.com/fomokaro578-9933s-projects/v0-exam-helper-ai-landing-page)**
+## Roadmap
+- Improve AI accuracy for exam questions
+- Add subject-specific modes
+- Add feedback system
+- Launch mobile app (Android first)
 
-## Build your app
+## Live Demo
+https://v0-exam-helper-ai-landing-page.vercel.app
 
-Continue building your app on:
-
-**[https://v0.app/chat/reznsSiUt0y](https://v0.app/chat/reznsSiUt0y)**
-
-## How It Works
-
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+## GitHub
+https://github.com/RevethG-Cpu/v0-exam-helper-ai-landing-page
