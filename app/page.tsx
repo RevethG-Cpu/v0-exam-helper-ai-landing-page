@@ -11,6 +11,7 @@ import CTA from "@/components/cta"
 import Footer from "@/components/footer"
 import ChatAssistant from "@/components/chat-assistant"
 import StickyWhatsApp from "@/components/sticky-whatsapp"
+import PolygonIntegration from "@/components/polygon-integration"
 
 export default function Home() {
   const [showChat, setShowChat] = useState(false)
@@ -23,6 +24,7 @@ export default function Home() {
       <VideoSection />
       <Pricing />
       <Testimonials />
+      <PolygonIntegration />
       <CTA />
       <Footer />
       <ChatAssistant isOpen={showChat} setIsOpen={setShowChat} />
