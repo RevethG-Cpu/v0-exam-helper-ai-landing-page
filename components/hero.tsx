@@ -126,13 +126,14 @@ export default function Hero() {
               <div className="relative bg-gradient-to-br from-slate-800/40 via-slate-900/60 to-slate-950/80 border border-slate-700/50 rounded-2xl p-8 backdrop-blur-xl">
                 <div className="space-y-6">
                   {/* Logo */}
-                  <div className="flex items-center justify-center">
+                  <div className="flex items-center justify-center group">
                     <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-2xl opacity-50" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 rounded-full blur-2xl opacity-50 group-hover:opacity-75 animate-web3-glow transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-3xl opacity-30 group-hover:opacity-40 animate-pulse" />
                       <img
                         src="https://i.ibb.co/zT9RNr5h/file-00000000a7ec71f4a94a471b2f1d7b7a-1.png"
                         alt="ExamHelper AI"
-                        className="relative w-32 h-32 object-contain"
+                        className="relative w-32 h-32 object-contain group-hover:scale-110 transition-transform duration-300 animate-web3-float"
                       />
                     </div>
                   </div>

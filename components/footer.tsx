@@ -2,6 +2,20 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-b from-slate-950 via-slate-900 to-black border-t border-slate-800/50 px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-5xl">
+        {/* Footer Logo Section */}
+        <div className="flex justify-center mb-12">
+          <div className="relative group">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-all duration-300" />
+            <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 rounded-full p-4 backdrop-blur-sm hover:border-blue-500/50 transition-colors animate-web3-float">
+              <img
+                src="https://i.ibb.co/mVTSY17h/file-00000000a88c71f49bd5ef3686e79bdf.png"
+                alt="ExamHelper AI Logo"
+                className="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+          </div>
+        </div>
+
         <div className="grid gap-8 md:grid-cols-3 mb-12 pb-12 border-b border-slate-800/50">
           {/* Brand section */}
           <div>
