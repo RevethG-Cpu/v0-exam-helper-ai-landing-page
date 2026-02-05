@@ -9,46 +9,45 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white px-4 py-20 sm:py-32 md:py-40">
+    <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white px-4 py-20 sm:py-32 md:py-40 scroll-mt-20">
       <div className="mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left side - Text content */}
           <div className="flex flex-col justify-center">
-            <div className="mb-6 inline-block rounded-full bg-green-100 px-4 py-2 w-fit">
-              <p className="text-sm font-medium text-green-700">✨ AI-Powered Study Help</p>
+            <div className="mb-6 inline-block rounded-full bg-green-100 px-4 py-2 w-fit border border-green-200">
+              <p className="text-sm font-semibold text-green-700">✨ AI-Powered Study Help</p>
             </div>
 
-            <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-5xl mb-6">
+            <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-5xl mb-6 leading-tight">
               Pass Your Exams With Confidence
             </h1>
 
-            <p className="text-balance text-lg text-muted-foreground mb-8 sm:text-xl">
+            <p className="text-balance text-lg text-muted-foreground mb-8 sm:text-xl leading-relaxed">
               Study tips, exam prayers, motivation & reminders delivered instantly on WhatsApp
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row mb-12">
-              <button onClick={handleSubscribeClick} className="w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  className="w-full h-12 px-8 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground rounded-full transition-all duration-200 active:scale-95"
-                >
-                  Subscribe Now
-                </Button>
-              </button>
-              <a
-                href="https://wa.me/2348100710264"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto"
+              <Button
+                onClick={handleSubscribeClick}
+                size="lg"
+                className="w-full sm:w-auto h-12 px-8 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground rounded-full transition-all duration-200 active:scale-95"
               >
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="w-full h-12 px-8 text-base font-semibold border-2 border-primary text-primary hover:bg-primary/5 rounded-full bg-transparent transition-all duration-200 active:scale-95"
+                Subscribe Now
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto h-12 px-8 text-base font-semibold border-2 border-primary text-primary hover:bg-primary/5 rounded-full bg-transparent transition-all duration-200 active:scale-95"
+              >
+                <a
+                  href="https://wa.me/2348100710264"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Chat on WhatsApp
-                </Button>
-              </a>
+                </a>
+              </Button>
             </div>
           </div>
 

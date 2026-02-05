@@ -22,13 +22,13 @@ export default function Testimonials() {
   ]
 
   return (
-    <section className="px-4 py-16 sm:py-20 md:py-24 bg-white">
+    <section className="px-4 py-16 sm:py-20 md:py-24 bg-gradient-to-b from-white to-blue-50/30">
       <div className="mx-auto max-w-5xl">
-        <div className="text-center mb-12">
+        <div className="text-center mb-14">
           <h2 className="text-balance text-3xl font-bold text-foreground sm:text-4xl md:text-4xl mb-4">
             What Our Students Say
           </h2>
-          <p className="text-lg text-muted-foreground">Trusted by students across Nigeria</p>
+          <p className="text-lg text-muted-foreground leading-relaxed">Trusted by students across Nigeria preparing for major exams</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">

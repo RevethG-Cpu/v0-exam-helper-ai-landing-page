@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-white to-blue-50 border-t border-border px-4 py-12 sm:py-16">
+    <footer className="bg-gradient-to-b from-background to-blue-50/50 dark:to-background/50 border-t border-border px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-5xl">
         <div className="flex justify-center mb-8">
           <div className="relative w-full max-w-xs h-32">

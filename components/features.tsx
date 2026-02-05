@@ -35,13 +35,13 @@ export default function Features() {
   ]
 
   return (
-    <section className="px-4 py-16 sm:py-20 md:py-24 bg-gradient-to-b from-white to-blue-50">
+    <section className="px-4 py-16 sm:py-20 md:py-24 bg-gradient-to-b from-blue-50/50 to-white">
       <div className="mx-auto max-w-5xl">
-        <div className="text-center mb-12">
+        <div className="text-center mb-14">
           <h2 className="text-balance text-3xl font-bold text-foreground sm:text-4xl md:text-4xl mb-4">
             Powerful Features for Your Success
           </h2>
-          <p className="text-lg text-muted-foreground">Everything you need to prepare for your exam with confidence</p>
+          <p className="text-lg text-muted-foreground leading-relaxed">Everything you need to prepare for your exam with confidence</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

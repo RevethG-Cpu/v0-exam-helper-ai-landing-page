@@ -37,14 +37,14 @@ export default function Pricing() {
   return (
     <section
       id="pricing-section"
-      className="px-4 py-16 sm:py-20 md:py-24 bg-gradient-to-b from-blue-50 to-white scroll-mt-20"
+      className="px-4 py-16 sm:py-20 md:py-24 bg-gradient-to-b from-white via-blue-50/50 to-white scroll-mt-20"
     >
       <div className="mx-auto max-w-5xl">
-        <div className="text-center mb-12">
+        <div className="text-center mb-14">
           <h2 className="text-balance text-3xl font-bold text-foreground sm:text-4xl md:text-4xl mb-4">
             Simple, Affordable Pricing
           </h2>
-          <p className="text-lg text-muted-foreground">Choose the plan that works for you</p>
+          <p className="text-lg text-muted-foreground leading-relaxed">Choose the plan that works for you and start preparing smarter</p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 max-w-3xl mx-auto">
